@@ -1,0 +1,26 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Room no.</th>
+            <th scope="col">Drivername</th>
+            <th scope="col">Drivercontact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of tracinglist">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+            <td>{{ user.room }}</td>
+            <td>{{ user.drivername }}</td>
+            <td>{{ user.drivercontact}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
