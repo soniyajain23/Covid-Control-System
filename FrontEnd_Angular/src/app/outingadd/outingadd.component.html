@@ -1,11 +1,14 @@
 <div *ngIf="isOut; else outingForm">
     Data is recorded! Check the outing list!
-    <a href="outing" class="btn btn-success">Show All Outing Record!</a>
-</div>
-
+    <a href="outing" class="btn btn-success">Show All Outing List</a>
+</div>  
 <ng-template #outingForm>
     <div class="row col-sm-6" style="max-width:350px;">
       <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        
+        <div>
+          <h4> Add Outing Details </h4>
+        </div>
         
         <div class="form-group">
             <label for="id">Student ID</label>
@@ -79,6 +82,6 @@
           </div>
         </div>
       </form>
-      <a href="outing" class="btn btn-success">Show All Outing Record!</a>
+      <a href="outing" class="btn btn-success">Show All Outing List</a>
     </div>
   </ng-template>

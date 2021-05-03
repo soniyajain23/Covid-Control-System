@@ -22,15 +22,15 @@ export class OutingaddComponent implements OnInit {
   onSubmit() {
     console.log(this.form);
   
-    // this.outingadd = new Outinglist(
-    //   this.form.id,
-    //   this.form.name,
-    //   this.form.email,
-    //   this.form.day,
-    //   this.form.duration,
-    //   this.form.reason,
-    //   this.form.outgoingtime,
-    //   this.form.returningtime);
+    this.outingadd = new Outinglist(
+      this.form.id,
+      this.form.name,
+      this.form.email,
+      this.form.day,
+      this.form.duration,
+      this.form.reason,
+      this.form.outgoingtime,
+      this.form.returningtime);
   
     this.functionsService.outing(this.outingadd).subscribe(
       data => {

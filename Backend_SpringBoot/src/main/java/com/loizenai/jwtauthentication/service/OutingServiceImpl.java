@@ -30,4 +30,10 @@ public class OutingServiceImpl implements OutingService{
         }
         return null;
     }
+
+    @Override
+    public Outing delete(Outing outing) {
+        outingRepository.save(outing);
+        return outing;
+    }
 }

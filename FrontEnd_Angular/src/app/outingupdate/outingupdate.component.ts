@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Outinglist } from '../model/outinglist';
 import { FunctionsService} from '../services/functions.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-outingupdate',
@@ -9,44 +9,43 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./outingupdate.component.css']
 })
 export class OutingupdateComponent implements OnInit {
-
-  id: number;
-  outinglist: Outinglist;
   form: any = {};
+  //outingadd: Outinglist;
+  outingadd: Outinglist = new Outinglist(
+    this.form.id,
+    this.form.name,
+    this.form.email,
+    this.form.day,
+    this.form.duration,
+    this.form.reason,
+    this.form.outgoingtime,
+    this.form.returningtime);
   isOut = false;
   isOutingFailed = false;
   errorMessage = '';
-
-  constructor(private route: ActivatedRoute,private router: Router,
-    private functionsService: FunctionsService) { }
+  id: number;
+  
+  constructor(private functionsService: FunctionsService,private router: Router,
+    private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.outinglist = new Outinglist();
-
     this.id = this.route.snapshot.params['id'];
-    
-    this.functionsService.getOuting(this.id)
-      .subscribe(data => {
-        console.log(data)
-        this.outinglist = data;
-      }, error => console.log(error));
-  }
-
-  updateOuting() {
-    this.functionsService.updateOuting(this.id, this.outinglist)
-    .subscribe(data => {
-      console.log(data);
-      this.outinglist = new Outinglist();
-      this.gotoList();
+    this.functionsService.getOutingById(this.id).subscribe(data => {
+      this.outingadd = data;
     }, error => console.log(error));
   }
 
+  outingupdate() {
+    this.functionsService.outingupdate(this.id, this.outingadd).subscribe(data => {
+      this.gotoList();
+      }, error => console.log(error));
+  }
+
   onSubmit() {
-    this.updateOuting();
+    this.outingupdate();
   }
 
   gotoList() {
     this.router.navigate(['/outing']);
   }
-
 }

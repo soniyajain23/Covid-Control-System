@@ -9,4 +9,6 @@ public interface OutingService {
     Outing save(Outing outing);
 
     Outing findById(Long id);
+
+    Outing delete(Outing outing);
 }
