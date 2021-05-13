@@ -9,9 +9,13 @@
       <li *ngIf="authority === 'user'" class="nav-item">
         <a class="nav-link" routerLink="user">User Board</a>
       </li>
+      
+      <li *ngIf="authority === 'admin'" class="nav-item">
+        <a class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
 
       <li *ngIf="authority === 'user'" class="nav-item">
-        <a class="nav-link" routerLink="user">Permission Request</a>
+        <a class="nav-link" routerLink="permissionadd">Permission Request</a>
       </li>
 
       <li *ngIf="authority === 'admin'" class="nav-item">
@@ -19,16 +23,13 @@
       </li>
 
       <li *ngIf="authority === 'admin'" class="nav-item">
-        <a class="nav-link" routerLink="outing">Outing</a>
+        <a class="nav-link" routerLink="outingadd">Outing</a>
       </li>
 
       <li *ngIf="authority === 'admin'" class="nav-item">
         <a class="nav-link" routerLink="tracingadd">Tracing</a>
       </li>
 
-      <li *ngIf="authority === 'admin'" class="nav-item">
-        <a class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
       <li *ngIf="authority === 'pm'" class="nav-item">
         <a class="nav-link" routerLink="pm">PM Board</a>
       </li>

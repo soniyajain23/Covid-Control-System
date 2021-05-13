@@ -1,3 +1,4 @@
+
 <div class="card my-5">
     <div class="card-body">
       <table class="table table-bordered table-striped">
@@ -10,6 +11,7 @@
             <th scope="col">Duration</th>
             <th scope="col">Message</th>
             <th scope="col">Status</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +23,11 @@
             <td>{{ user.duration }}</td>
             <td>{{ user.msg}}</td>
             <td>{{ user.status}}</td>
+            <div>
+              <button (click)="callFunction1($event, user.pid)" class="btn btn-success" >Accept</button>   
+           /
+                <button (click)="callFunction2($event, user.pid)" class="btn btn-danger" >Deny</button>   
+             </div>
           </tr>
         </tbody>
       </table>

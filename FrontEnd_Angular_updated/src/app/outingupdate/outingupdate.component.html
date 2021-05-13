@@ -1,0 +1,90 @@
+<div *ngIf="isOut; else outingupdateForm">
+    Data is updated! Check the outing list!
+    <a href="outing" class="btn btn-success">Show All Outing List</a>
+</div>  
+<ng-template #outingupdateForm>
+    <div class="row col-sm-6" style="max-width:350px;">
+      <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      -->
+      <form (ngSubmit) = "onSubmit()">
+        <div>
+          <h4> Update Outing Details </h4>
+        </div>
+        
+        <div class="form-group">
+            <label for="id">Student ID</label>
+            <input type="number" class="form-control" id = "id" name="id" [(ngModel)]="outingadd.id"/>
+
+            <!--<div *ngIf="f.submitted && id.invalid">
+              <div *ngIf="id.errors.required">Student ID is required</div>
+            </div>-->
+        </div>
+
+        <div class="form-group">
+          <label for="name">Student Name</label>
+          <input type="text" class="form-control" name="name" id = "name" [(ngModel)]="outingadd.name"/>
+          <!--<div *ngIf="f.submitted && name.invalid">
+            <div *ngIf="name.errors.required">Name is required</div>
+          </div>-->
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" id = "email" [(ngModel)]="outingadd.email"/>
+          <!--<div *ngIf="f.submitted && email.invalid">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+          </div>-->
+        </div>
+        
+        <div class="form-group">
+            <label for="day">Day</label>
+            <input type="text" class="form-control" name="day" id = "day" [(ngModel)]="outingadd.day"/>
+            <!--<div *ngIf="f.submitted && day.invalid">
+              <div *ngIf="day.errors.required">Day is required</div>
+            </div>-->
+        </div>
+
+        <div class="form-group">
+          <label for="duration">Duration</label>
+          <input type="number" min="0" step="0.1" class="form-control" name="duration" id = "duration" [(ngModel)]="outingadd.duration"/>
+          <!--<div *ngIf="f.submitted && duration.invalid">
+            <div *ngIf="duration.errors.required">Duration is required</div>
+          </div>-->
+        </div>
+
+        <div class="form-group">
+            <label for="reason">Reason</label>
+            <input type="text" class="form-control" name="reason" id = "reason" [(ngModel)]="outingadd.reason"/>
+            <!--<div *ngIf="f.submitted && reason.invalid">
+              <div *ngIf="reason.errors.required">Reason is required</div>
+            </div>-->
+        </div>
+        
+        <div class="form-group">
+            <label for="outgoingtime">Outgoing Time</label>
+            <input type="time" class="form-control" name="outgoingtime" id = "outgoingtime" [(ngModel)]="outingadd.outgoingtime"/>
+            <!--<div *ngIf="f.submitted && outgoingtime.invalid">
+              <div *ngIf="outgoingtime.errors.required">Outgoing Time is required</div>
+            </div>-->
+        </div>
+
+        <div class="form-group">
+            <label for="returningtime">Returning Time</label>
+            <input type="time" class="form-control" name="returningtime" id = "returningtime" [(ngModel)]="outingadd.returningtime"/>
+            <!--<div *ngIf="f.submitted && returningtime.invalid">
+              <div *ngIf="returningtime.errors.required">Returning Time is required</div>
+            </div>-->
+        </div>
+
+        <!--<div class="form-group">
+          <button class="btn btn-primary">Submit</button>
+          <div *ngIf="f.submitted && isOutingFailed" class="alert alert-warning">
+            Outing record failed!<br/>{{errorMessage}}
+          </div>
+        </div>-->
+
+        <button class = "btn btn-primary" type = "submit">Submit</button>
+      </form>
+    </div>
+  </ng-template>

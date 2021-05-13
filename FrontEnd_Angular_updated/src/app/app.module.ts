@@ -17,6 +17,10 @@ import { PermissionComponent } from './permission/permission.component';
 import { TracinglistComponent } from './tracinglist/tracinglist.component';
 import { OutingComponent } from './outing/outing.component';
 import { TracingaddComponent } from './tracingadd/tracingadd.component';
+import { OutingaddComponent } from './outingadd/outingadd.component';
+import { PermissionaddComponent } from './permissionadd/permissionadd.component';
+import { OutingupdateComponent } from './outingupdate/outingupdate.component';
+import { TracingupdateComponent } from './tracingupdate/tracingupdate.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { TracingaddComponent } from './tracingadd/tracingadd.component';
     PermissionComponent,
     TracinglistComponent,
     OutingComponent,
-    TracingaddComponent
+    TracingaddComponent,
+    OutingaddComponent,
+    PermissionaddComponent,
+    OutingupdateComponent,
+    TracingupdateComponent
   ],
   imports: [
     BrowserModule,

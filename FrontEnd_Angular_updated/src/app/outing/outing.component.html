@@ -1,3 +1,23 @@
+<div>
+  <a href="outingadd" class="btn btn-success">Add more Outing Details</a>
+</div>
+<br />
+<input type="text" placeholder="Search here" [(ngModel)]="filters.keyword" name="keyword" (input)="getOuting()">
+<br /><br />
+
+<p> <strong> Sort By </strong> </p>
+<select name="sortBy" [(ngModel)]="filters.sortBy" (change)="getOuting()">
+  <option>Id</option>
+  <option>Name</option>
+  <option>Day</option>
+  <option>Out Time</option>
+</select>
+<select name="order" style="margin-left: 10px;" [(ngModel)]="filters.order" (change)="getOuting()">
+  <option>Ascending</option>
+  <option>Descending</option>
+</select>
+
+<h4> Outing List </h4>
 <div class="card my-5">
     <div class="card-body">
       <table class="table table-bordered table-striped">
@@ -8,7 +28,10 @@
             <th scope="col">Email</th>
             <th scope="col">Day</th>
             <th scope="col">Duration</th>
+            <th scope="col">Out Time</th>
+            <th scope="col">In Time</th>
             <th scope="col">Reason</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -18,7 +41,13 @@
             <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
             <td>{{ user.day }}</td>
             <td>{{ user.duration }}</td>
+            <td>{{ user.outgoingtime }}</td>
+            <td>{{ user.returningtime }}</td>
             <td>{{ user.reason}}</td>
+            <td>
+              <button (click) = "outingupdate(user.id)" class = "btn btn-info">Update</button>
+              <button (click) = "outingdelete(user.id)" class = "btn btn-danger" style="margin-left: 10px;">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -17,13 +17,13 @@ export class AppComponent implements OnInit {
       this.roles = this.tokenStorage.getAuthorities();
       this.roles.every(role => {
         if (role === 'ROLE_ADMIN') {
-          this.authority = 'admin';
+          this.authority = 'user';
           return false;
         } else if (role === 'ROLE_PM') {
           this.authority = 'pm';
           return false;
         }
-        this.authority = 'user';
+        this.authority = 'admin';
         return true;
       });
     }
