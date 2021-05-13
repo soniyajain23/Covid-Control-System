@@ -18,11 +18,7 @@ import java.util.Map;
 @RequestMapping("/api/outing")
 @RestController
 public class OutingController {
-
-    // standard constructors
-
 //    private final OutingRepository outingRepository;
-
     @Autowired
     OutingService outingService;
 
@@ -35,24 +31,12 @@ public class OutingController {
         List<Outing> outing = outingService.findAll();
         return new ResponseEntity<List<Outing>> (outing, HttpStatus.OK);
     }
-
     //add outing details
     @PostMapping("/add")
     void addOuting(@RequestBody Outing outing) {
         outingService.save(outing);
     }
-//    @PostMapping("/add")
-//    public ResponseEntity<Outing> addOuting(@RequestBody Outing outing) {
-//        final Outing outing1 = outingService.save(outing);
-//        return new ResponseEntity<Outing>(outing1, HttpStatus.OK);
-//    }
-    // update
-//    @GetMapping("/show/{id}")
-//    public ResponseEntity<Outing> updateOuting(@PathVariable("id") Long id) {
-//        Outing outing = outingService. findById(id);
-//        return new ResponseEntity<Outing> (outing, HttpStatus.OK);
-//    }
-    //get outing list by id
+
     @GetMapping("/show/{id}")
     public ResponseEntity<Outing> getOutingById(@PathVariable(value = "id") Long id) {
         Outing outing = outingService.findById(id);
@@ -72,10 +56,7 @@ public class OutingController {
         outing.setDuration(outingDetails.getDuration());
         outing.setOutgoingtime(outingDetails.getOutgoingtime());
         outing.setReturningtime(outingDetails.getReturningtime());
-        //final Outing updatedOuting = OutingRepository.save(outing);
-        //return ResponseEntity.ok(updatedOuting);
         Outing updatedOuting = outingService.save(outing);
-        //return new ResponseEntity<Outing> (outing2, HttpStatus.OK);
         return ResponseEntity.ok().body(updatedOuting);
     }
 

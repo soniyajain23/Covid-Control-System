@@ -8,15 +8,14 @@ public class Tracing {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     //@Column(name = "id",unique=true, nullable = false)
-    private int id;
+    private long id;
     private  String email;
     private String name;
     private  int room;
     private  String Drivername;
     private  int drivercontact;
 
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -63,9 +62,6 @@ public class Tracing {
     public void setDrivercontact(int drivercontact) {
         this.drivercontact = drivercontact;
     }
-
-
-
 
     }
 

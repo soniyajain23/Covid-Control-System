@@ -3,10 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TracinglistComponent } from './tracinglist/tracinglist.component';
 import { TracingaddComponent } from './tracingadd/tracingadd.component';
 import { OutingComponent } from './outing/outing.component';
-import { OutingaddComponent } from './outingadd/outingadd.component';
-import { OutingupdateComponent } from './outingupdate/outingupdate.component';
 import { PermissionComponent } from './permission/permission.component';
-import { PermissionaddComponent } from './permissionadd/permissionadd.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -40,20 +37,8 @@ const routes: Routes = [
         component: OutingComponent
     },
     {
-        path: 'outingadd',
-        component: OutingaddComponent
-    },
-    {
-        path: 'outingupdate/:id',
-        component: OutingupdateComponent
-    },
-    {
         path: 'permission',
         component: PermissionComponent
-    },
-    {
-        path: 'permissionadd',
-        component: PermissionaddComponent
     },
     {
         path: 'admin',
