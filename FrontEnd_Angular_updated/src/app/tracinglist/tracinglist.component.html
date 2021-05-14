@@ -1,3 +1,23 @@
+<div>
+  <a href="tracingadd" class="btn btn-success">Add more Tracing Details</a>
+</div>
+<br />
+<input type="text" placeholder="Search here" [(ngModel)]="filters.keyword" name="keyword" (input)="getTracing()">
+<br /><br />
+
+<p> <strong> Sort By </strong> </p>
+<select name="sortBy" [(ngModel)]="filters.sortBy" (change)="getTracing()">
+  <option>Id</option>
+  <option>Name</option>
+  <option>Email</option>
+  <option>Room</option>
+</select>
+<select name="order" style="margin-left: 10px;" [(ngModel)]="filters.order" (change)="getTracing()">
+  <option>Ascending</option>
+  <option>Descending</option>
+</select>
+
+<h4> Tracing List </h4>
 <div class="card my-5">
     <div class="card-body">
       <table class="table table-bordered table-striped">
@@ -9,6 +29,7 @@
             <th scope="col">Room no.</th>
             <th scope="col">Drivername</th>
             <th scope="col">Drivercontact</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -19,6 +40,10 @@
             <td>{{ user.room }}</td>
             <td>{{ user.drivername }}</td>
             <td>{{ user.drivercontact}}</td>
+            <td>
+              <button (click) = "tracingupdate(user.id)" class = "btn btn-info">Update</button>
+              <button (click) = "tracingdelete(user.id)" class = "btn btn-danger" style="margin-left: 10px;">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>

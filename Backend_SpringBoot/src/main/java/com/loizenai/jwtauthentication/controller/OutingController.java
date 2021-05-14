@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/outing")
@@ -62,13 +59,9 @@ public class OutingController {
 
     //delete outing rest api
     @DeleteMapping("/show/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteOuting(@PathVariable Long id){
-        Outing outing = outingService.findById(id);
-
-        outingService.delete(outing);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return ResponseEntity.ok().body(response);
+    public ResponseEntity<String> deleteOuting(@PathVariable Long id){
+        outingService.delete(id);
+        return new ResponseEntity<String>("A record is deleted successfully!",HttpStatus.OK);
     }
 
 }

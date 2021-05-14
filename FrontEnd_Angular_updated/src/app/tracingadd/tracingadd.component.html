@@ -50,7 +50,7 @@
         <div class="form-group">
             <label for="drivercontact">Driver Mobile No.</label>
             <input type="number" class="form-control" name="drivercontact" [(ngModel)]="form.drivercontact" #drivercontact="ngModel" 
-            required maxlength="10" maxlength="10"/>
+            required maxlength="10" minlength="10"/>
             <div *ngIf="f.submitted && drivercontact.invalid">
               <div *ngIf="drivercontact.errors.required">Driver's Contact No. is required</div>
               <div *ngIf="drivercontact.errors.minlength">Mobile Number must be of 10 digits</div>
@@ -65,6 +65,6 @@
           </div>
         </div>
       </form>
-      <a href="tracinglist" class="btn btn-success">Show All</a>
+      <a href="tracinglist" class="btn btn-success">Show All Tracing List</a>
     </div>
   </ng-template>

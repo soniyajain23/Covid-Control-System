@@ -25,7 +25,6 @@ export class FunctionsService {
   private permissionaddUrl = 'http://localhost:8081/api/permission/add';
   private outinglistUrl = 'http://localhost:8081/api/outing/show';
   private outingaddUrl = 'http://localhost:8081/api/outing/add';
-  private outingupdateUrl = 'http://localhost:8081/api/outing/show';
   private acceptUrl = 'http://localhost:8081/api/permission/update+';
   private denyUrl = 'http://localhost:8081/api/permission/update-';
   
@@ -35,46 +34,51 @@ export class FunctionsService {
   public findAllTracing(): Observable<Tracinglist[]> {
     return this.http.get<Tracinglist[]>(this.tracinglistUrl);
   }
-
   public trace(tracingadd: Tracinglist): Observable<string>{
     return this.http.post<string>(this.tracingaddUrl, tracingadd, this.httpOptions);
   }
+  public getTracingById(id: number): Observable<Tracinglist> {
+    return this.http.get<Tracinglist>(`${this.tracinglistUrl}/${id}`);
+  }
+  public tracingupdate(id: number, tracing: Tracinglist): Observable<Object> {
+    return this.http.put(`${this.tracinglistUrl}/${id}`, tracing);
+  }
+  public tracingdelete(id: number): Observable<any> {
+    return this.http.delete(`${this.tracinglistUrl}/${id}`,{responseType: 'text'});
+  }
+
 
   public findAllOuting(): Observable<Outinglist[]> {
     return this.http.get<Outinglist[]>(this.outinglistUrl);
   }
-
   public outing(outingadd: Outinglist): Observable<string>{
     return this.http.post<string>(this.outingaddUrl, outingadd, this.httpOptions);
   }
-
   public getOutingById(id: number): Observable<Outinglist> {
-    return this.http.get<Outinglist>(`${this.outingupdateUrl}/${id}`);
+    return this.http.get<Outinglist>(`${this.outinglistUrl}/${id}`);
   }
   public outingupdate(id: number, outing: Outinglist): Observable<Object> {
-    return this.http.put(`${this.outingupdateUrl}/${id}`, outing);
+    return this.http.put(`${this.outinglistUrl}/${id}`, outing);
   }
-  public outingdelete(id: number): Observable<Object> {
-    return this.http.delete(`${this.outingupdateUrl}/${id}`);
+  public outingdelete(id: number): Observable<any> {
+    return this.http.delete(`${this.outinglistUrl}/${id}`,{responseType: 'text'});
   }
+  
   
   public findAllPermission(): Observable<Permissionlist[]> {
     return this.http.get<Permissionlist[]>(this.permissionlistUrl);
   }
-
   public permission(permissionadd: Permissionlist): Observable<string>{
     return this.http.post<string>(this.permissionaddUrl, permissionadd, this.httpOptions);
   }
-
   acceptr(pidn:number) {
     var observable = this.http.post('http://localhost:8081/api/permission/update+'+'?pid='+pidn,pidn)
     return observable;
-}
-
+  }
   denyr(pidn:number) {
     var observable = this.http.post('http://localhost:8081/api/permission/update-'+'?pid='+pidn,pidn)
     return observable;
-}
+  }
 
   //public denyr(pid : number):{
  // const params = new HttpParams().append('pid', '37' );

@@ -38,7 +38,8 @@ export class OutingComponent implements OnInit {
   outingdelete(id: number) {
     this.functionsService.outingdelete(id).subscribe(data => {
       console.log(data);
-      this.getOuting();
+       this.getOuting();
+      //this.router.navigate(['/outing']);
     })
   }
 

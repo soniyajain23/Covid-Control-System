@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TracinglistComponent } from './tracinglist/tracinglist.component';
 import { TracingaddComponent } from './tracingadd/tracingadd.component';
+import { TracingupdateComponent } from './tracingupdate/tracingupdate.component';
 import { OutingComponent } from './outing/outing.component';
 import { OutingaddComponent } from './outingadd/outingadd.component';
 import { OutingupdateComponent } from './outingupdate/outingupdate.component';
@@ -35,10 +36,10 @@ const routes: Routes = [
         path: 'tracingadd',
         component: TracingaddComponent
     },
-    // {
-    //     path: 'tracingupdate/:id',
-    //     component: TracingupdateComponent
-    // },
+    {
+        path: 'tracingupdate/:id',
+        component: TracingupdateComponent
+    },
     {
         path: 'outing',
         component: OutingComponent

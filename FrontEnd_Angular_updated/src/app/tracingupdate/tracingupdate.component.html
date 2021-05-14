@@ -1,1 +1,75 @@
-<p>tracingupdate works!</p>
+<div *ngIf="isTraced; else tracingupdateForm">
+    Data is updated! Check the tracing list!
+    <a href="tracinglist" class="btn btn-success">Show All Tracing List</a>
+</div>
+
+<ng-template #tracingupdateForm>
+    <div class="row col-sm-6" style="max-width:350px;">
+      <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      -->
+      <form (ngSubmit) = "onSubmit()">
+        <div>
+          <h4> Update Tracing Details </h4>
+        </div>
+        <div class="form-group">
+            <label for="id">Student ID</label>
+            <input type="number" class="form-control" name="id" id = "id" [(ngModel)]="tracingadd.id"/>
+            <!--<div *ngIf="f.submitted && id.invalid">
+              <div *ngIf="id.errors.required">Student ID is required</div>
+            </div>-->
+        </div>
+
+        <div class="form-group">
+          <label for="name">Student Name</label>
+          <input type="text" class="form-control" name="name" id = "name" [(ngModel)]="tracingadd.name"/>
+          <!--<div *ngIf="f.submitted && name.invalid">
+            <div *ngIf="name.errors.required">Name is required</div>
+          </div>-->
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" id = "email" [(ngModel)]="tracingadd.email"/>
+          <!--<div *ngIf="f.submitted && email.invalid">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+          </div>-->
+        </div>
+        
+        <div class="form-group">
+          <label for="room">Student Room No.</label>
+          <input type="number" class="form-control" name="room" id = "room" [(ngModel)]="tracingadd.room"/>
+          <!--<div *ngIf="f.submitted && room.invalid">
+            <div *ngIf="room.errors.required">Room No. is required</div>
+          </div>-->
+        </div>
+        
+        <div class="form-group">
+            <label for="drivername">Driver name</label>
+            <input type="text" class="form-control" name="drivername" id = "drivername" [(ngModel)]="tracingadd.drivername"/>
+            <!--<div *ngIf="f.submitted && drivername.invalid">
+              <div *ngIf="drivername.errors.required">Driver Name is required</div>
+            </div>-->
+        </div>
+
+        <div class="form-group">
+            <label for="drivercontact">Driver Mobile No.</label>
+            <input type="number" class="form-control" name="drivercontact" id = "drivercontact" [(ngModel)]="tracingadd.drivercontact"/>
+            <!--<div *ngIf="f.submitted && drivercontact.invalid">
+              <div *ngIf="drivercontact.errors.required">Driver's Contact No. is required</div>
+              <div *ngIf="drivercontact.errors.minlength">Mobile Number must be of 10 digits</div>
+              <div *ngIf="drivercontact.errors.maxlength">Mobile Number must be of 10 digits</div>
+            </div>-->
+        </div>
+        
+        <!--<div class="form-group">
+          <button class="btn btn-primary">Submit</button>
+          <div *ngIf="f.submitted && isTracingFailed" class="alert alert-warning">
+            Tracing failed!<br/>{{errorMessage}}
+          </div>
+        </div>-->
+
+        <button class = "btn btn-primary" type = "submit">Submit</button>
+      </form>
+    </div>
+  </ng-template>

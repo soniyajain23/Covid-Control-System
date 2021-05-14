@@ -10,5 +10,5 @@ public interface OutingService {
 
     Outing findById(Long id);
 
-    Outing delete(Outing outing);
+    void delete(Long id);
 }

@@ -1,8 +1,11 @@
 package com.loizenai.jwtauthentication.controller;
+import com.loizenai.jwtauthentication.model.Outing;
 import com.loizenai.jwtauthentication.repository.TracingRepository;
 import com.loizenai.jwtauthentication.model.Tracing;
 import com.loizenai.jwtauthentication.repository.UserRepository;
+import com.loizenai.jwtauthentication.service.TracingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +25,9 @@ public class TracingController {
     @Autowired
     TracingRepository tracingRepository;
 
+    @Autowired
+    TracingService tracingService;
+
     public TracingController(TracingRepository tracingRepository) {
         this.tracingRepository = tracingRepository;
     }
@@ -37,18 +43,31 @@ public class TracingController {
 
     // get tracing by id rest api
     @GetMapping("/show/{id}")
-    public ResponseEntity<Optional<Tracing>> getTracingById(@PathVariable long id) {
+    public ResponseEntity<Tracing> getTracingById(@PathVariable long id) {
 
-        Optional<Tracing> tracing = tracingRepository.findById(id);
+        Tracing tracing = tracingService.findById(id);
         return ResponseEntity.ok(tracing);
     }
 
     // update tracing rest api
-//    @PutMapping("/show/{id}")
-//    public ResponseEntity<Optional<Tracing>> updateTracing(@PathVariable Long id, @RequestBody Tracing tracingDetails) {
-//        Optional<Tracing> tracing = tracingRepository.findById(id);
-//
-//        tracing.set
-//
-//    }
+    @PutMapping("/show/{id}")
+    public ResponseEntity<Tracing> updateTracing(@PathVariable Long id, @RequestBody Tracing tracingDetails) {
+        Tracing tracing = tracingService.findById(id);
+
+        tracing.setId((int) tracingDetails.getId());
+        tracing.setEmail(tracingDetails.getEmail());
+        tracing.setName(tracingDetails.getName());
+        tracing.setRoom(tracingDetails.getRoom());
+        tracing.setDrivername(tracingDetails.getDrivername());
+        tracing.setDrivercontact(tracingDetails.getDrivercontact());
+        Tracing updatedTracing = tracingService.save(tracing);
+        return ResponseEntity.ok().body(updatedTracing);
+    }
+
+    //delete outing rest api
+    @DeleteMapping("/show/{id}")
+    public ResponseEntity<String> deleteTracing(@PathVariable Long id){
+        tracingService.delete(id);
+        return new ResponseEntity<String>("A record is deleted successfully!", HttpStatus.OK);
+    }
 }

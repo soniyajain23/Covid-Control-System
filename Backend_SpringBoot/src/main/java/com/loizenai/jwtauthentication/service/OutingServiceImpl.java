@@ -32,8 +32,14 @@ public class OutingServiceImpl implements OutingService{
     }
 
     @Override
-    public Outing delete(Outing outing) {
-        outingRepository.save(outing);
-        return outing;
+    public void delete(Long id) {
+        Outing outing = findById(id);
+        outingRepository.delete(outing);
     }
+
+//    @Override
+//    public Outing delete(Outing outing) {
+//        outingRepository.save(outing);
+//        return outing;
+//    }
 }
